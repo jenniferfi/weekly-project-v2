@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+//Testaa proxyserverin, console-loggaa topicsit
+
 class Test extends Component {
     state = { posts: [] }
 
@@ -8,7 +10,7 @@ class Test extends Component {
             .then(res => res.json())
             .then(posts => {
                 console.log(posts);
-                this.setState({ posts: posts })
+                //this.setState({ posts: posts })
             })
     }
     render() {
