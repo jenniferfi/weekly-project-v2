@@ -1,4 +1,4 @@
-Lisää "proxy": "http://localhost:5000" package.jsoniin (viikoproj 2)
+Lisää: "proxy": "http://localhost:5000"  --> package.jsoniin (viikoproj 2)
 
 Käynnistä konsolista viikkoprojekti vol.1: set PORT=5000&npm start
 

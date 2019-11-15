@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Topics from './Topics';
+import {Table} from 'react-bootstrap';
+import {deleteTopicWithId} from '../service/apiclient';
 
 class TopicList extends Component {
     state = { topics: [] }
@@ -11,10 +13,14 @@ class TopicList extends Component {
           this.setState({topics: topics})
         })
     }
-  
+    deleteTopic = id => {
+      deleteTopicWithId(id).then(vastaus => {
+          this.getQuoteList();
+      })
+    }
     render() {
       return (
-        <table>
+        <Table striped hover responsive="sm">
             <thead>
                 <tr>
                 <th>Title</th>
@@ -27,8 +33,8 @@ class TopicList extends Component {
                 <th>Completion Date</th>
                 </tr>
             </thead>
-          <Topics topics={this.state.topics}/>
-        </table>
+          <Topics topics={this.state.topics} deleteCallback={this.deleteTopic}/>
+        </Table>
       );
     }
   }

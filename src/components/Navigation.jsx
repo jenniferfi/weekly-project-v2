@@ -9,7 +9,7 @@ export default class Navigation extends Component {
       return (
         <Navbar fixed='top' expand="sm" collapseOnSelect bg='dark' variant='dark'>
             <NavbarBrand>
-              Academy Weekly Project
+              Academy Weekly Project v.2
             </NavbarBrand>
             <Navbar.Toggle aria-controls='quote-navbar-nav' />
             <Navbar.Collapse id='quote-navbar-nav'>
