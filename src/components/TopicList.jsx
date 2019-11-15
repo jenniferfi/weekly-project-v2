@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
-import Topics from './Topics';
+import Topic from './Topic';
 import {Table} from 'react-bootstrap';
-import {deleteTopicWithId} from '../service/apiclient';
+import {deleteTopicWithId, fetchAllTopics} from '../service/apiclient';
 
 class TopicList extends Component {
     state = { topics: [] }
 
     componentDidMount = () => {
-      fetch('/api/topics')
-        .then(res => res.json())
-        .then(topics => {
-          this.setState({topics: topics})
-        })
+        this.getTopicList();
+    }
+    getTopicList =()=>{
+      fetchAllTopics().then(topics=>{
+        this.setState({topics});
+      })
     }
     deleteTopic = id => {
       deleteTopicWithId(id).then(vastaus => {
-          this.getQuoteList();
+        this.getTopicList();
       })
     }
     render() {
+      const topicItems = this.state.topics.map((topic)=>{
+        return <Topic {...this.props} deleteCallback={this.deleteTopic} topic={topic} key={topic.id} />
+      });
       return (
         <Table striped hover responsive="sm">
             <thead>
@@ -33,7 +37,9 @@ class TopicList extends Component {
                 <th>Completion Date</th>
                 </tr>
             </thead>
-          <Topics topics={this.state.topics} deleteCallback={this.deleteTopic}/>
+            <tbody>
+              {topicItems}
+            </tbody>
         </Table>
       );
     }

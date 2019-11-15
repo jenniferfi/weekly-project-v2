@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Form, Button, Container} from 'react-bootstrap';
-import {postTopic} from '../service/apiclient';
+import { postTopic } from '../service/apiclient';
 
 class TopicForm extends Component {
     state = {title:'', description:'', timetomaster:'', timespent:'', source:'', startlearningdate:'', inprogress: true, completiondate:''}
